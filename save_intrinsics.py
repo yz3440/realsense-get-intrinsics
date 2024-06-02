@@ -4,8 +4,8 @@ import json
 print("Starting the camera...")
 pipeline = rs.pipeline()
 config = rs.config()
-config.enable_stream(rs.stream.infrared, 1, 1280, 720, rs.format.z16, 15)
-config.enable_stream(rs.stream.infrared, 2, 1280, 720, rs.format.z16, 15)
+config.enable_stream(rs.stream.infrared, 1, 1280, 720, rs.format.y8, 15)
+config.enable_stream(rs.stream.infrared, 2, 1280, 720, rs.format.y8, 15)
 
 print("Starting the pipeline...")
 cfg = pipeline.start(config)
@@ -34,7 +34,7 @@ try:
                 "fy": intr.fy,
                 "ppx": intr.ppx,
                 "ppy": intr.ppy,
-                "model": intr.model,
+                "coeffs": intr.coeffs,
             },
             f,
         )
